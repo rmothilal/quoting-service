@@ -15,7 +15,7 @@ const Database = require('./data/cachedDatabase.js')
  */
 const initDb = function (config) {
   // try open a db connection pool
-  let database = new Database(config)
+  const database = new Database(config)
   return database.connect()
 }
 
@@ -99,6 +99,7 @@ initDb(config.database).then(db => {
   server.log(['info'], `Server running on ${server.info.uri}`)
 // eslint-disable-next-line no-unused-vars
 }).catch(err => {
+  throw err
   // eslint-disable-next-line no-console
-  //console.log(`Error initializing server: ${err.stack || util.inspect(err)}`)
+  // console.log(`Error initializing server: ${err.stack || util.inspect(err)}`)
 })

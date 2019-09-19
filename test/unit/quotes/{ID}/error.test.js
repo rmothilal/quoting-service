@@ -44,7 +44,6 @@ const Db = require('../../../../src/data/database')
  * Test for /quotes/{ID}/error
  */
 Test('/quotes/{ID}/error', t => {
-
   let sandbox
 
   t.beforeEach(test => {
@@ -106,7 +105,11 @@ Test('/quotes/{ID}/error', t => {
     }
     sandbox.stub(Db.prototype, 'getParticipantEndpoint').callsFake(
       (err, info) => {
-        console.info(info)
+        if (err) {
+          console.log(err)
+        } else {
+          console.info(info)
+        }
       }
     )
 
